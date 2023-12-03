@@ -13,7 +13,7 @@ abstract class Figure(val height: Int, val length: Int) {
 class Cube(length: Int) : Figure(length, length) {
     override val name = "куба"
     override val lateralSquare = (length * length).toDouble()
-    override val upperSquare = lateralSquare.toDouble()
+    override val upperSquare = lateralSquare
     override val volume = upperSquare * length
 }
 

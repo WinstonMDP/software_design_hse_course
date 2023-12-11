@@ -17,61 +17,61 @@
 Зафиксировать продажу билета на сеанс
 
 ```zsh
-cinema sell \<telephon number\> \<date\> \<x seat coordinate\> \<y seat coordinate\>
+cinema sell <telephon number> <date> <x seat coordinate> <y seat coordinate>
 ```
 
 Зафиксировать возврат билета на сеанс
 
 ```zsh
-cinema revert \<date\> \<x seat coordinate\> \<y seat coordinate\>
+cinema revert <date> <x seat coordinate> <y seat coordinate>
 ```
 
 Назначить сеанс
 
 ```zsh
-cinema assign \<date\> \<film name\>
+cinema assign <date> <film name>
 ```
 
 Отменить сеанс
 
 ```zsh
-cinema remove session \<date\>
+cinema remove session <date>
 ```
 
 Удалить фильм из базы данных
 
 ```zsh
-cinema remove film \<film name\>
+cinema remove film <film name>
 ```
 
 Добавить фильм в базу данных
 
 ```zsh
-cinema add \<film name\>
+cinema add <film name>
 ```
 
 Изменить свойство фильма
 
 ```zhs
-cinema edit \<film name\> \<field name\> \<content\>
+cinema edit <film name> <field name> <content>
 ```
 
 Вывести сеанс
 
 ```zsh
-cinema show session \<date\>
+cinema show session <date>
 ```
 
 Вывести все сеансы
 
 ```zsh
-cinema show sessions \<date\>
+cinema show sessions <date>
 ```
 
 Вывести фильм
 
 ```zsh
-cinema show film \<film name\>
+cinema show film <film name>
 ```
 
 Вывести все фильмы
@@ -83,5 +83,5 @@ cinema show films
 Зафиксировать то, что человек пришёл на сеанс
 
 ```zsh
-cinema occupy \<date\> \<x seat coordinate\> \<y seat coordinate\>
+cinema occupy <date> <x seat coordinate> <y seat coordinate>
 ```

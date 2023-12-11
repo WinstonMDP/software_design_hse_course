@@ -133,7 +133,7 @@ class SellCommand(private val args: Array<String>) : Command(args, 5) {
 }
 
 class RevertCommand(private val args: Array<String>) : Command(args, 4) {
-    private val date: LocalDateTime = toDate(args[1])
+    private val date = toDate(args[1])
     private val session = getSession(date)
     private val x = session.toX(args[2])
     private val y = session.toY(args[3])
@@ -237,34 +237,33 @@ class EditDescriptionCommand(args: Array<String>) : Command(args, 4) {
     override fun run() {
         film.description = newDescription
         saveFilms()
-        saveSessions()
     }
 }
 
 class ShowSession(private val args: Array<String>) : Command(args, 3) {
     private val session = getSession(toDate(args[2]))
 
-    override fun run() {
-        println("$session")
-    }
+    override fun run() = println("$session")
 }
 
-class ShowSessions(private val args: Array<String>) : Command(args, 2) {
-    override fun run() {
-        sessions.forEach { (key, value) -> println("${key} : ${value.filmName}") }
-    }
+class ShowSessions(args: Array<String>) : Command(args, 2) {
+    override fun run() = sessions.forEach { (key, value) -> println("${key} : ${value.filmName}") }
 }
 
 class ShowFilm(private val args: Array<String>) : Command(args, 3) {
-    override fun run() {
-        println(films[args[2]])
-    }
+    override fun run() = println(films[args[2]])
 }
 
-class ShowFilms(private val args: Array<String>) : Command(args, 2) {
-    override fun run() {
-        films.values.forEach { film -> println("$film") }
-    }
+class ShowFilms(args: Array<String>) : Command(args, 2) {
+    override fun run() = films.values.forEach { film -> println("$film") }
+}
+
+class ShowSeat(private val args: Array<String>) : Command(args, 5) {
+    private val session = getSession(toDate(args[2]))
+    private val x = session.toX(args[3])
+    private val y = session.toY(args[4])
+
+    override fun run() = println(session.seats[y][x].first)
 }
 
 class Occupy(private val args: Array<String>) : Command(args, 4) {
@@ -322,6 +321,7 @@ fun main(args: Array<String>) {
                     "sessions" -> ShowSessions(args).run()
                     "film" -> ShowFilm(args).run()
                     "films" -> ShowFilms(args).run()
+                    "seat" -> ShowSeat(args).run()
                     else -> throw elseCommandE
                 }
             "occupy" -> Occupy(args).run()

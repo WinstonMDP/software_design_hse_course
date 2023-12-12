@@ -95,3 +95,11 @@ cinema show seat <date> <x seat coordinate> <y seat coordinate>
 ```zsh
 cinema occupy <date> <x seat coordinate> <y seat coordinate>
 ```
+
+## Запуск
+
+Пример того, как я запускал программу
+
+```zsh
+gradle run --args="show films"
+```

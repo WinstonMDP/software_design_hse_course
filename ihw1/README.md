@@ -29,16 +29,16 @@ cinema sell <telephon number> <date> <x seat coordinate> <y seat coordinate>
 cinema revert <date> <x seat coordinate> <y seat coordinate>
 ```
 
+Добавить фильм в базу данных
+
+```zsh
+cinema add <film name>
+```
+
 Назначить сеанс
 
 ```zsh
 cinema assign <date> <film name>
-```
-
-Отменить сеанс
-
-```zsh
-cinema remove session <date>
 ```
 
 Удалить фильм из базы данных
@@ -47,10 +47,10 @@ cinema remove session <date>
 cinema remove film <film name>
 ```
 
-Добавить фильм в базу данных
+Отменить сеанс
 
 ```zsh
-cinema add <film name>
+cinema remove session <date>
 ```
 
 Изменить свойство фильма

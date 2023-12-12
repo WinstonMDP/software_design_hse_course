@@ -107,7 +107,7 @@ abstract class Command(args: Array<String>, mustArgsCount: Int) {
     init {
         if (mustArgsCount != args.size) {
             throw Exception(
-                "${mustArgsCount - 1} arguments was expected, but ${args.size - 1} was provided"
+                "$mustArgsCount arguments was expected, but ${args.size} was provided"
             )
         }
     }
@@ -301,20 +301,31 @@ fun main(args: Array<String>) {
             "sell" -> SellCommand(args).run()
             "revert" -> RevertCommand(args).run()
             "assign" -> AssignCommand(args).run()
-            "remove" ->
+            "remove" -> {
+                if (args.size == 1) {
+                    throw elseCommandE
+                }
                 when (args[1]) {
                     "session" -> RemoveSessionCommand(args).run()
                     "film" -> RemoveFilmCommand(args).run()
                     else -> throw elseCommandE
                 }
+            }
             "add" -> AddCommand(args).run()
-            "edit" ->
+            "edit" -> {
+                if (args.size == 1) {
+                    throw elseCommandE
+                }
                 when (args[2]) {
                     "name" -> EditNameCommand(args).run()
                     "description" -> EditDescriptionCommand(args).run()
                     else -> throw elseCommandE
                 }
-            "show" ->
+            }
+            "show" -> {
+                if (args.size == 1) {
+                    throw elseCommandE
+                }
                 when (args[1]) {
                     "session" -> ShowSessionCommand(args).run()
                     "sessions" -> ShowSessionsCommand(args).run()
@@ -323,6 +334,7 @@ fun main(args: Array<String>) {
                     "seat" -> ShowSeatCommand(args).run()
                     else -> throw elseCommandE
                 }
+            }
             "occupy" -> OccupyCommand(args).run()
             else -> throw elseCommandE
         }
